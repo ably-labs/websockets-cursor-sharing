@@ -4,8 +4,6 @@ const sockjs = require('sockjs');
 var wss = sockjs.createServer({ sockjs_url: 'http://cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js' });
 const clients = new Map();
 
-console.log(wss);
-
 wss.on('connection', (ws) => {
     console.log("connected");
     const id = uuidv4();
@@ -32,8 +30,6 @@ wss.on('connection', (ws) => {
       clients.delete(ws);
     });
 });
-
-
 
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

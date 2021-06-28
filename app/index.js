@@ -1,26 +1,26 @@
 (async function() {
 
-    const sock = await connectToServer();    
+    const ws = await connectToServer();    
 
     document.body.onmousemove = (evt) => {
         const messageBody = { x: evt.clientX, y: evt.clientY };
-        sock.send(JSON.stringify(messageBody));
+        ws.send(JSON.stringify(messageBody));
     };
 
-    sock.onmessage = (webSocketMessage) => {
+    ws.onmessage = (webSocketMessage) => {
         const messageBody = JSON.parse(webSocketMessage.data);
         const cursor = getOrCreateCursorFor(messageBody);
         cursor.style.transform = `translate(${messageBody.x}px, ${messageBody.y}px)`;
     };
         
     async function connectToServer() {    
-        const sock = new SockJS('http://localhost:7071/ws');
+        const ws = new SockJS('http://localhost:7071/ws');
         return new Promise((resolve, reject) => {
             const timer = setInterval(() => {
-                console.log(sock.readyState)
-                if(sock.readyState === 1) {
+                console.log(ws.readyState)
+                if(ws.readyState === 1) {
                     clearInterval(timer);
-                    resolve(sock);
+                    resolve(ws);
                 }
             }, 10);
         });   
