@@ -10,10 +10,13 @@
 * The server adds the client's `id` and other metadata
 * The enhanced message is sent to all the clients.
 
+# What's in here?
+
+This repository contains two demos which share cursor positions over WebSockets. One using WS in the `main` branch and one using SockJS in the `SockJS` branch.
 
 # Running this sample
 
-This sample includes two applications, a web app, that we serve through Snowpack, and a Node.a
+This demo includes two applications, a web app, that we serve through Snowpack, and a Node.js webserver. The NPM start task will spin up both the API and the webserver.
 
 ```bash
 > npm install
