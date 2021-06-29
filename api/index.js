@@ -1,7 +1,7 @@
 const http = require('http');
 const sockjs = require('sockjs');
 
-var wss = sockjs.createServer({ sockjs_url: 'http://cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js' });
+const wss = sockjs.createServer();
 const clients = new Map();
 
 wss.on('connection', (ws) => {

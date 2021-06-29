@@ -17,7 +17,6 @@
         const ws = new SockJS('http://localhost:7071/ws');
         return new Promise((resolve, reject) => {
             const timer = setInterval(() => {
-                console.log(ws.readyState)
                 if(ws.readyState === 1) {
                     clearInterval(timer);
                     resolve(ws);
